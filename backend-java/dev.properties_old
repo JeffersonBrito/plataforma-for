@@ -8,13 +8,13 @@ db.username=root
 db.password=
 
 mail.smtp.from.name=ForPDI
-mail.smtp.from.email=naoresponda-forpdi-stg@ufca.edu.br
-mail.smtp.url=smtp-relay.google.com
-mail.smtp.port=465
+mail.smtp.from.email=noreply@forpdi.org
+mail.smtp.url=localhost
+mail.smtp.port=25
 mail.smtp.username=
 mail.smtp.password=
-mail.smtp.ssl=true
-mail.smtp.tls=true
+mail.smtp.ssl=false
+mail.smtp.tls=false
 
 store.pdfs=./temp
 store.files=/var/forpdi/files/

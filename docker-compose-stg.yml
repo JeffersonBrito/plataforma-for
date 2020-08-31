@@ -8,6 +8,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: docker12345
       MYSQL_DATABASE: plataformafor
+    networks:
+      - default
 
   forpdi-backend:
     build: ./backend-java
@@ -20,18 +22,28 @@ services:
     ports:
       - 8009:8009
       - 8080:8080
-    environment: 
+    environment:
       - "JAVA_OPTS=-Djava.net.preferIPv4Stack=true"
+    networks:
+      - default
 
   forpdi-frontend:
     build: ./frontend-web
     image: platfor-front
     depends_on:
       - forpdi-backend
-    ports:
-      - 80:80
+    environment:
+      - VIRTUAL_HOST=for.stg.ufca.edu.br
+    networks:
+      - proxy
+      - default
 
 volumes:
   pdfs:
   arquivos:
   mysql:
+
+networks:
+  proxy:
+    external:
+      name: proxy_nginx_default
